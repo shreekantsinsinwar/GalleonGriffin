@@ -1,7 +1,7 @@
 on:
   push:
     paths:
-      - 'DailyDuel.py'
+      - 'GalleonGriffin.py'
       - '.github/workflows/build.yml'
       - 'requirements.txt'
   workflow_dispatch:
@@ -24,13 +24,13 @@ jobs:
           pip install -r requirements.txt pyinstaller
 
       - name: Build Windows Executable
-        run: pyinstaller --onefile --noconsole --distpath dist DailyDuel.py
+        run: pyinstaller --onefile --noconsole --distpath dist GalleonGriffin.py
 
       - name: Upload Artifact (.exe)
         uses: actions/upload-artifact@v4
         with:
-          name: DailyDuel-Windows
-          path: dist/DailyDuel.exe
+          name: GalleonGriffin-Windows
+          path: dist/GalleonGriffin.exe
 
   build-linux:
     runs-on: ubuntu-latest
@@ -49,13 +49,13 @@ jobs:
           pip3 install -r requirements.txt pyinstaller
 
       - name: Build Linux AppImage
-        run: pyinstaller --onefile --distpath dist DailyDuel.py
+        run: pyinstaller --onefile --distpath dist GalleonGriffin.py
 
       - name: Upload Artifact (.AppImage)
         uses: actions/upload-artifact@v4
         with:
-          name: DailyDuel-Linux
-          path: dist/DailyDuel
+          name: GalleonGriffin-Linux
+          path: dist/GalleonGriffin
 
   build-macos:
     runs-on: macos-latest
@@ -74,10 +74,10 @@ jobs:
           pip3 install -r requirements.txt pyinstaller
 
       - name: Build macOS Executable
-        run: pyinstaller --onefile --distpath dist DailyDuel.py
+        run: pyinstaller --onefile --distpath dist GalleonGriffin.py
 
       - name: Upload Artifact (.dmg)
         uses: actions/upload-artifact@v4
         with:
-          name: DailyDuel-macOS
-          path: dist/DailyDuel
+          name: GalleonGriffin-macOS
+          path: dist/GalleonGriffin
